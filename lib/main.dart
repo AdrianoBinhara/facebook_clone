@@ -1,10 +1,11 @@
 import 'dart:ui';
 
-import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:facebook_clone/routing_constants.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'router.dart' as router;
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
@@ -22,6 +23,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      onGenerateRoute: router.generateRoute,
+      initialRoute: HomeViewRouter,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -118,7 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
             onPrimary: Colors.white,
             minimumSize: Size(500, 55),
             textStyle: TextStyle(fontSize: 20)),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, FeedViewRouter);
+        },
       );
 
   Widget buildPassword() => TextField(
